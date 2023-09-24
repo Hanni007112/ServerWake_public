@@ -1,0 +1,7 @@
+ServerWake.code-workspace
+db.sqlite3
+webserver/config.json
+webserver/main/__pycache__
+webserver/main/migrations
+webserver/webserver/__pycache__
+webserver/main/templatetags/__pycache__

@@ -1,0 +1,14 @@
+<style>
+    @media screen and (min-width: {{breakpoint}} ) {
+        .section-wrap {width: auto;}
+
+        .directServer-controll-wrap{
+            display: flex;
+        }
+        .directServer-controll{
+            width: 40%;
+            max-width: 13em;
+        }
+
+    }
+</style>

@@ -1,0 +1,10 @@
+<style>
+    :root{
+        --lightShades_color: {{lightShades_color}};
+        --lightAccent_color: {{lightAccent_color}};
+        --mainBrand_color: {{mainBrand_color}};
+        --darkAccent_color: {{darkAccent_color}};
+        --darkShades_color: {{darkShades_color}};
+        --min-width: {{minWidth}};
+    }
+</style>

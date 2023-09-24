@@ -1,0 +1,7 @@
+<style>
+    @media screen and (min-width: {{breakpoint}} ) {
+        #form-wrap      {width: 50%;}
+        #form-wrap{
+            font-size: 1rem;}
+    }
+</style>

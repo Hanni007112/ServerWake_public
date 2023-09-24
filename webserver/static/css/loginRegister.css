@@ -1,0 +1,111 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+}
+
+
+#main_container{
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
+#form-wrap{
+    margin: auto;
+    width: 80%;
+    min-width: 15em;
+    background-color: var(--lightAccent_color);
+    padding: 0.2rem;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0, 0.5),
+                0 6px 20px 0 rgba(0,0,0,0.49);
+    border-radius: 5px;
+    font-size: 1.15rem;
+    
+}
+
+#form-wrap > h1 {
+    text-align: center;
+}
+
+#form-wrap table {
+    margin: auto;
+    border-spacing: 0 0.3em;
+}
+
+#loginRegister-link-wrap {
+    text-align: center;
+    vertical-align: middle;
+    padding: 0.2em 0.2em;
+    margin: 0.5em 0;
+}
+
+#loginRegister-link-wrap > a {
+    text-decoration: none;
+    background-color: var(--darkAccent_color);
+    color: inherit;
+    padding: 0.2em 0.2em;
+    border-radius: 5px;
+}
+
+#submitButton-wrap {
+    text-align: center;
+    margin: 0.5em auto;
+}
+
+#submitButton-wrap input{
+    background-color: var(--darkAccent_color);
+    border: none;
+    color: inherit;
+    padding: 0.6em 0.8em;
+    font-size: 1em;  
+    font-weight: 500; 
+    margin-top: 0.5em;
+    border-radius: 5px;
+}
+
+.LoginRegister-icon-wrap{
+    padding: 0.2em;
+    background-color: var(--darkAccent_color);
+}
+
+#form-wrap table input{
+    padding: 0.35em;
+    border: 0;;
+}
+
+#form-wrap table td{
+    padding: 0;
+}
+
+#form-errors-wrap{
+    text-align:center;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#form-errors-wrap:empty{
+    border: 5px solid red;
+}
+
+#form-errors-wrap ul{
+    text-align:left;
+}
+
+#messages-wrap{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#messages{
+    background-color: var(--darkAccent_color);
+    color: inherit;
+    padding: 0.4em;
+    text-align: center;
+    margin: auto;
+}

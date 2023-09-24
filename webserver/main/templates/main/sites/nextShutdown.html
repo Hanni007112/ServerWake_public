@@ -1,0 +1,1 @@
+{% load tz %}{% if nextShutdown %}{{nextShutdown|localtime|date:'d.m.Y H:i' }}{% else %}no planned Shutdowns{% endif %}

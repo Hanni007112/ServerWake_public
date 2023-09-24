@@ -1,0 +1,143 @@
+{% extends 'main/main.html' %}
+{% load static %}
+{% load extras %}
+{% load tz %}
+
+{% block head %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="{% static '/js/dashboard.js'%}" ></script>
+{% endblock%}
+
+
+{% block header %}
+    {% include 'main/header.html'%}
+{% endblock header %}
+
+{% block content %}
+    <link rel="stylesheet" href="{% static '/css/dashboard.css'%}">
+    {% include 'main/css/dashboard_media.css' %}
+    {% if messages %}
+        <div id="messages-wrap">
+            {% for message in messages %}
+                <div id="messages">{{message}}</div>
+            {% endfor %}
+        </div>
+    {% endif%}
+
+    <h1>Server Wake</h1>
+
+    <div class="section-wrap">
+        <h2> The Server is currently <br>
+            {% if serverIsLive %}
+            <span class="dot" style="background-color: limegreen;"></span> Online
+            {% else %}
+            <span class="dot" style="background-color: red;"></span> Offline
+            {% endif %}
+        </h2>
+        {% if nextShutdown %}
+        <h3> Server will shutdown in {{nextShutdown|timeuntil}}</h3>
+        {% get_current_timezone as TIME_ZONE %}
+        <p class="shutdownDateTime"> 
+            {{nextShutdown|localtime|date:'d.m.Y H:i' }} {{TIME_ZONE}} <br>
+            {{nextShutdown|utc }} UTC
+        </p>
+        {% endif %}
+    </div>
+    {% if createAllocationForm %}
+        <div class="section-wrap">
+            <h2> Create an Allocation</h2>
+            <form method="POST" action="{% url 'createAllocation'%}">
+                {% csrf_token %}
+                {{ createAllocationForm.non_field_errors }}
+                <table>
+                    <tr>
+                        <td>Allocation Duration:<i class="fa-solid fa-clock-rotate-left"></i></td>
+                        <td>{{createAllocationForm.durationInHours}} h</td>
+                    </tr>
+                </table>
+                
+                <div id="submitButton-wrap">
+                    <input type="submit" name="Create Allocation">
+                </div>
+            </form>
+            <div id="form-errors-wrap">
+                {{createAllocationForm.errors}}
+            </div>
+        </div>
+    {% endif %}
+
+    {% if currentAllocations or allocationHistory %}
+        <div class="section-wrap">
+        {% if currentAllocations %}
+            <h2> Current Allocations</h2>
+            {% for allocation in currentAllocations %}
+            <div class="allocation-wrap">
+                Start:
+                <span class="allocationDateTime">{{ allocation.startTime|localtime|date:'d.m.Y H:i' }}</span>
+                End:
+                <span class="allocationDateTime">{{ allocation.endTime|localtime|date:'d.m.Y H:i' }}</span>
+
+                <span style="display: inline-flex; justify-content: center;">
+                {% if allocation.active %}
+                    <span class="changeAllocationSpan" style="background-color: limegreen;">
+                        <i class="fa-solid fa-check fa-l"></i>
+                    </span>
+                    <button onclick="submitChangeForm({{allocation.id}}, false)" class="buttonNoStyling changeAllocationButton deactivateButton">
+                        <i class="fa-solid fa-square-xmark fa-xl"></i>
+                    </button>
+                {% else %}
+                    <button onclick="submitChangeForm({{allocation.id}}, true)" class="buttonNoStyling changeAllocationButton activateButton">
+                        <i class="fa-solid fa-square-check fa-xl"></i>
+                    </button>
+                    <span class="changeAllocationSpan" style="background-color: rgb(255, 91, 91);">
+                        <i class="fa-solid fa-xmark fa-l"></i>
+                    </span>
+                {% endif %} 
+                </span> 
+                <br>
+            </div>
+            {% endfor %}
+        {% endif %}
+            
+        {% if allocationHistory %}
+            <h2> Allocation History</h2>
+                {% for allocation in allocationHistory %}
+                <div class="allocation-wrap">
+                    Start:
+                    <span class="allocationDateTime">{{ allocation.startTime|localtime|date:'d.m.Y H:i' }}</span>
+                    End:
+                    <span class="allocationDateTime">{{ allocation.endTime|localtime|date:'d.m.Y H:i' }}</span>
+                </div>
+                {% endfor %}
+        {% endif %}
+        </div>
+    {% endif %}
+
+    {% if user.is_superuser or request.user|has_group:"admin" %} 
+        <div class="section-wrap">
+            <h2> Direct Server Controll</h2>
+            <div class="directServer-controll-wrap">
+                <div class="aButton-wrap directServer-controll" > <a href="{% url 'powerOn'%}"> POWER ON </a></div>
+                <div class="aButton-wrap directServer-controll" > <a href="{% url 'powerOff'%}"> POWER OFF </a> </div>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if changeAllocationForm %}
+    <form method="POST" name="changeAllocationForm" action="{% url 'changeAllocation'%}" style="display: none;">
+        {% csrf_token %}
+        {{changeAllocationForm}}
+        
+            <input type="submit" name="Change Allocation">
+    </form>
+    <div id="form-errors-wrap">
+        {{changeAllocationForm.errors}}
+    </div>
+    {% endif %}
+
+{% endblock %}
+
+
+{% block footer %}
+    {% include "main/footer.html" %}
+{% endblock footer %}

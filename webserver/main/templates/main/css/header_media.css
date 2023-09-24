@@ -1,0 +1,6 @@
+<style>
+    @media screen and (min-width: {{breakpoint}} ) {
+        /*Header*/
+        #header-icon-wrap       {font-size: 5rem;}
+    }
+</style>

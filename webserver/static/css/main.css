@@ -1,0 +1,47 @@
+/**{
+    outline: 1px solid red;
+}*/
+
+body{
+    background-color: var(--darkShades_color);
+    color : var(--lightShades_color);
+    min-width: var(--min-width);
+}
+
+#main_container{
+    /*width: 70%; 70vw*/
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.flex-center-vertically{
+    display: flex;
+    align-items: center;
+}
+
+.flex-center-horizontally{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.reset-button {
+    background-color: transparent;
+    border-width: 0;
+    font-family: inherit;
+    font-size: inherit;
+    font-style: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    padding: 0;
+  }
+
+.buttonNoStyling{
+    background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}

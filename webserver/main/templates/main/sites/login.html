@@ -1,0 +1,61 @@
+{% extends 'main/main.html' %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static '/css/loginRegister.css'%}">
+    {% include 'main/css/loginRegister_media.css' %}
+
+    
+{% endblock head %}
+
+{% block content %}    
+    <div id="form-wrap">
+        <h1>Login</h1>
+        <form method="POST" action="">
+            {% csrf_token %}
+            <table>
+                <tr>
+                    <td><div class="LoginRegister-icon-wrap"><i class="fa-solid fa-user"></i></div></td>
+                    <!--<td>{{form.username.label}}</td>-->
+                    <td><input type="text" name="username" maxlength="150" autofocus="" required="" id="id_username"></td>
+                </tr>
+                <tr>
+                    <td><div class="LoginRegister-icon-wrap"><i class="fa-solid fa-key"></i></div></td>
+                    <!--<td>{{form.email.label}}</td>-->
+                    <td><input type="password" name="password" autocomplete="password" required="" id="id_password1"></td>
+                </tr>
+            </table>
+            
+            <div id="submitButton-wrap">
+                <input type="submit" name="Login User">
+            </div>
+        </form>
+        <div id="form-errors-wrap">
+            {{form.errors}}
+        </div>
+
+        <div id="messages-wrap">
+            {% for message in messages %}
+                <p id="messages">{{message}}</p>
+            {% endfor %}
+        </div>
+        <div id="loginRegister-link-wrap">
+            Don't have an account? <a href="{% url 'register' %}"> Sign Up </a>
+        </div>
+    </div>
+
+    <script>
+        /* Because i didnt set placeholder values in forms.py they will be set here using vanilla Javascript
+        //We start indexing at one because CSRF_token is considered and input field 
+            */
+    
+        //Query All input fields
+        var form_fields = document.getElementsByTagName('input')
+        form_fields[1].placeholder='Username..';
+        form_fields[2].placeholder='Enter password...';
+    
+        /*for (var field in form_fields){	
+            form_fields[field].className += ' form-control'
+        }*/
+    </script>
+{% endblock %}
