@@ -2,15 +2,20 @@ from django.urls import path
 from . import views
 from django.contrib.auth.models import Group
 # to automatically ad it to the requirements when running pipreqs        import fontawesomefree 
+import os
+import django.db.utils
 
 def one_time_startup():
     Group.objects.get_or_create(name='normalUser')
     Group.objects.get_or_create(name='admin')
 
 configFilePath = os.path.realpath(os.path.join(os.path.dirname(__file__), '..', 'db.sqlite3'))
-print(configFilePath)
 if os.path.isfile(configFilePath):
-    one_time_startup()
+    try:
+        if Group.objects.exists():
+            one_time_startup()
+    except django.db.utils.OperationalError:
+        pass
 
 urlpatterns = [
     path('', views.home, name='home'),
