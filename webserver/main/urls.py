@@ -7,8 +7,10 @@ def one_time_startup():
     Group.objects.get_or_create(name='normalUser')
     Group.objects.get_or_create(name='admin')
 
-
-one_time_startup()
+configFilePath = os.path.realpath(os.path.join(os.path.dirname(__file__), '..', 'db.sqlite3'))
+print(configFilePath)
+if os.path.isfile(configFilePath):
+    one_time_startup()
 
 urlpatterns = [
     path('', views.home, name='home'),
