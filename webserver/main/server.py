@@ -3,6 +3,7 @@ import subprocess  # For executing a shell command
 import paramiko
 import os
 import telnetlib
+import django.db.utils
 
 import datetime
 
@@ -38,6 +39,8 @@ def ping(host):
             latest = ServerPing.objects.latest()
             createNew = (now() - latest.timestamp) > datetime.timedelta(minutes=10)
         except ServerPing.DoesNotExist: 
+            pass
+        except django.db.utils.OperationalError:
             pass
 
     time = 0.2
