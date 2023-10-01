@@ -31,8 +31,7 @@ def home(request):
         "currentAllocations" : currentAllocations,
         "allocationHistory" : allocationHistory,
         'createAllocationForm' : createAllocationForm,
-        'changeAllocationForm' : changeAllocationForm,
-        'serverPings' : ServerPing.objects.all()
+        'changeAllocationForm' : changeAllocationForm
     }
     return render(request, 'main/sites/dashboard.html', context)
 
