@@ -38,7 +38,7 @@ U have to change the following things:
  
  This project is using a django based webserver and can be run as a docker container. 
 
-* start docker image [Docker compose example](/docker-compose-yml)
+* start docker image [Docker compose example](/docker-compose.yml)
 
 * create a superuser to giver permission to other users and yourself 
  ``` cmd
