@@ -17,6 +17,7 @@ import datetime
 def home(request):
     print('here')
     serverIsLive = server.ping(config['serverIp'])
+    print('after ping ')
     if not request.user.is_authenticated :
         context = {'serverIsLive' : serverIsLive, 'nextShutdown' : server.nextShutdown()}
         print('here unautheticated')
