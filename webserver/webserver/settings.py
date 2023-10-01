@@ -20,7 +20,7 @@ import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 DATA_DIR = BASE_DIR / 'DATA'
 
-if os.path.isdir(DATA_DIR):
+if not os.path.isdir(DATA_DIR):
     os.mkdir(DATA_DIR)
 
 
