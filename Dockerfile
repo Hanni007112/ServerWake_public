@@ -1,6 +1,6 @@
 FROM python:3.8.3-slim
 
-WORKDIR /usr/src/web
+WORKDIR /usr/src/app
 
 # set environment variables  
 ENV PYTHONDONTWRITEBYTECODE 1
