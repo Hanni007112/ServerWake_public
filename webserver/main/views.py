@@ -15,9 +15,11 @@ from .config import config
 import datetime
 
 def home(request):
+    print('here')
     serverIsLive = server.ping(config['serverIp'])
     if not request.user.is_authenticated :
         context = {'serverIsLive' : serverIsLive, 'nextShutdown' : server.nextShutdown()}
+        print('here unautheticated')
         return render(request, 'main/sites/dashboard.html', context)
 
     createAllocationForm = createServerAllocation(request.user)
@@ -25,6 +27,7 @@ def home(request):
     currentAllocations =  ServerAllocation.objects.filter(user=request.user, endTime__gte = server.now()).order_by("-startTime") #endtime >= now
     allocationHistory = ServerAllocation.objects.filter(user=request.user, endTime__lt = server.now()).order_by("-startTime")  #endTime < now
     django.utils.timezone.activate(config["TZ"])
+    print('here pre context')
     context = {
         'serverIsLive' : serverIsLive,
         'nextShutdown' : server.nextShutdown(),
@@ -33,6 +36,7 @@ def home(request):
         'createAllocationForm' : createAllocationForm,
         'changeAllocationForm' : changeAllocationForm
     }
+    print('post context')
     return render(request, 'main/sites/dashboard.html', context)
 
 def nextShutdown(request):
