@@ -20,10 +20,10 @@ services:
   web_run:
     extends:
       service: web
-    command: 
+    command: >
       sh -c "python manage.py makemigrations main &&
-        python manage.py migrate
-        python manage.py runserver 0.0.0.0:8000"
+            python manage.py migrate &&
+            python manage.py runserver 0.0.0.0:8000"
 
     ports:
       - "8000:8000"
