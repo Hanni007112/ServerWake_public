@@ -3,14 +3,9 @@ services:
     build: .
     volumes:
       - .yourVolumePathHere:/usr/src/app/DATA
-
-  web_run:
-    extends:
-      service: web
     command: >
       sh -c "python manage.py makemigrations main &&
             python manage.py migrate &&
             python manage.py runserver 0.0.0.0:8000"
-
     ports:
       - "8000:8000"
