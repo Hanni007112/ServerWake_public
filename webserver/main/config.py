@@ -9,8 +9,8 @@ def createConfig(path):
         "powerOnPassword" : "Test",
         "powerOffPassword" : "1234",
         "arduinoPort" : "23",
-        "arduinoIp" : "###",
-        "serverIp" : "###",
+        "arduinoIp" : "192.168.1.2",
+        "serverIp" : "192.168.1.2",
         "adminMaxAllocation" : 48,
         "normalMaxAllocation" : 4,
         "allowedHosts" : ["*"],
@@ -26,7 +26,7 @@ def createConfig(path):
         json_file.write(json_object)
 
 # Opening JSON file
-configFilePath = os.path.realpath(os.path.join(os.path.dirname(__file__), '..', 'config.json'))
+configFilePath = os.path.realpath(os.path.join(os.path.dirname(__file__), '..', '/DATA/config.json'))
 if not os.path.isfile(configFilePath):
     createConfig(configFilePath)
 

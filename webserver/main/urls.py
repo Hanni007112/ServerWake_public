@@ -9,7 +9,7 @@ def one_time_startup():
     Group.objects.get_or_create(name='normalUser')
     Group.objects.get_or_create(name='admin')
 
-configFilePath = os.path.realpath(os.path.join(os.path.dirname(__file__), '..', 'db.sqlite3'))
+configFilePath = os.path.realpath(os.path.join(os.path.dirname(__file__), '..', 'DATA/db.sqlite3'))
 if os.path.isfile(configFilePath):
     try:
         if Group.objects.exists():
