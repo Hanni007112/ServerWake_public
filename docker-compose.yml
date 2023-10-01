@@ -1,21 +1,8 @@
 services:
   web:
     build: .
-    environment:
-      MYENV: EXAMPLE
     volumes:
-      - .:/code
-  # web_migrate:
-  #   extends:
-  #     service: web
-  #   command: 
-  #     python
-  #     manage.py
-  #     |
-  #       makemigrations main
-  #       migrate
-  #     #python manage.py makemigrations main &&
-  #     #python manage.py migrate
+      - .yourVolumePathHere:/usr/src/app/DATA
 
   web_run:
     extends:
