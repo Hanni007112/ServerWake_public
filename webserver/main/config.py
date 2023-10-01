@@ -27,7 +27,6 @@ def createConfig(path):
 
 # Opening JSON file
 configFilePath = os.path.realpath(os.path.join(os.path.dirname(__file__), '..', 'DATA', 'config.json'))
-print(configFilePath)
 if not os.path.isfile(configFilePath):
     createConfig(configFilePath)
 

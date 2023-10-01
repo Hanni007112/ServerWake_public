@@ -36,11 +36,13 @@ U have to change the following things:
  
  ## Webserver
  
- This project is using a django based webserver. 
- 
- before Using the Server u need to:
- * create a superuser to giver permission to other users and yourself 
+ This project is using a django based webserver and can be run as a docker container. 
+
+* start docker image [Docker compose example](/docker-compose-yml)
+
+* create a superuser to giver permission to other users and yourself 
  ``` cmd
  python manage.py createsuperuser 
  ```
- * edit the config.json, created at first startup of the webserver
+
+ * edit the config.json, created at first startup of the webserver located in the volume / path you specified

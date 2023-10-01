@@ -1,6 +1,6 @@
 services:
   web:
-    build: .
+    build: https://github.com/Hanni007112/ServerWake_public.git
     volumes:
       - .yourVolumePathHere:/usr/src/app/DATA
     command: >
