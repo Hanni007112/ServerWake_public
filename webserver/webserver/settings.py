@@ -14,9 +14,14 @@ from pathlib import Path
 
 from main.config import config
 
+import os
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 DATA_DIR = BASE_DIR / 'DATA'
+
+if os.path.isdir(DATA_DIR):
+    os.mkdir(DATA_DIR)
 
 
 # Quick-start development settings - unsuitable for production
