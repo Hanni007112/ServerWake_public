@@ -13,8 +13,8 @@ RUN pip install --upgrade setuptools
 COPY ./webserver /usr/src/app/
 RUN pip install -r requirements.txt
 
-#RUN apt-get update -y
-#RUN apt-get install -y iputils-ping
+RUN apt-get update -y
+RUN apt-get install -y iputils-ping
 RUN mkdir DATA
 
 EXPOSE 8000
