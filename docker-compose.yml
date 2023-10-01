@@ -21,12 +21,13 @@ services:
     extends:
       service: web
     command: 
+      bash -c "
       python 
       manage.py 
       | 
         makemigrations main
         migrate
-        runserver 0.0.0.0:8000
+        runserver 0.0.0.0:8000"
 
     ports:
       - "8000:8000"
