@@ -20,9 +20,6 @@ import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 DATA_DIR = BASE_DIR / 'DATA'
 
-if not os.path.isdir(DATA_DIR):
-    os.mkdir(DATA_DIR)
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
