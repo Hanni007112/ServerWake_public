@@ -11,7 +11,7 @@ RUN pip install --upgrade pip
 RUN pip install --upgrade setuptools
 RUN apt-get update -y
 RUN apt-get install -y iputils-ping
-RUN apt-get install gcc
+RUN apt-get install -y gcc
                         
 COPY ./webserver /usr/src/app/
 RUN pip install -r requirements.txt
