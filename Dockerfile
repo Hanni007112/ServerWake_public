@@ -9,13 +9,13 @@ ENV PYTHONUNBUFFERED 1
 #install dependencies
 RUN pip install --upgrade pip
 RUN pip install --upgrade setuptools
+RUN apt-get update -y
+RUN apt-get install -y iputils-ping
+RUN apt-get install gcc
                         
 COPY ./webserver /usr/src/app/
 RUN pip install -r requirements.txt
 
-RUN apt-get update -y
-RUN apt-get install -y iputils-ping
-RUN apt-get install gcc
 RUN mkdir DATA
 
 EXPOSE 8000
