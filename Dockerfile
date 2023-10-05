@@ -15,6 +15,7 @@ RUN pip install -r requirements.txt
 
 RUN apt-get update -y
 RUN apt-get install -y iputils-ping
+RUN apt-get install gcc
 RUN mkdir DATA
 
 EXPOSE 8000
