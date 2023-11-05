@@ -46,3 +46,4 @@ U have to change the following things:
  ```
 
  * edit the config.json, created at first startup of the webserver located in the volume / path you specified
+ * give users permissions to allocate the server (add them to the group `normalUser` or `admin` in admin panel (/admin))
