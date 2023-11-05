@@ -1,5 +1,7 @@
 # ServerWake
-a Project to power on and off a Server remotely.
+A Project to power on and off a Server remotely.
+U can assign permissions to users, which then can allocate the server.
+The server is auotomatically controlled based on these allocations.
 
 There are many improvements to make, feel free to commit to this project!
 
